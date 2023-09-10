@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *
+        {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body
+        {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background : linear-gradient(45deg , #121f19 , rgb(114, 113, 113));
+        }
+        #calculator
+        {
+            border: 2px solid black;
+            padding : 17px;
+            border-radius: 7%;
+            background : linear-gradient(45deg , #2c5d46 , white);
+        }
+        input
+        {
+            width: 272px;
+            background-color: black;
+            color: whitesmoke;
+            margin: 10px;
+            padding : 18px;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-size: 40px;
+            text-align: right;
+            border: none;
+            border-radius: 5px;
+        }
+        button
+        {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        .arithmatic
+        {
+            background-color: yellow;
+        }
+        #equal
+        {
+            background-color: orange;
+        }
+        input:hover
+        {
+            cursor: pointer;
+        }
+        input placeholder
+        {
+            color: yellow;
+        }
+        input::placeholder
+        {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="inputbox" placeholder="0">
+        <div>
+            <button class="btn" onclick="removeall()">AC</button>
+            <button class="btn" onclick="removeLast()">DEL</button>
+            <button class="btn" onclick="show(this)">%</button>
+            <button class="arithmatic" onclick="show(this)">/</button>
+        </div>
+        <div>
+            <button class="btn" onclick="show(this)">7</button>
+            <button class="btn" onclick="show(this)">8</button>
+            <button class="btn" onclick="show(this)">9</button>
+            <button class="arithmatic" onclick="show(this)">*</button>
+        </div>
+        <div>
+            <button class="btn" onclick="show(this)">4</button>
+            <button class="btn" onclick="show(this)">5</button>
+            <button class="btn" onclick="show(this)">6</button>
+            <button class="arithmatic" onclick="show(this)">+</button>
+        </div>
+        <div>
+            <button class="btn" onclick="show(this)">1</button>
+            <button class="btn" onclick="show(this)">2</button>
+            <button class="btn" onclick="show(this)">3</button>
+            <button class="arithmatic" onclick="show(this)">-</button>
+        </div>
+        <div>
+            <button class="btn" onclick="show(this)">00</button>
+            <button class="btn" onclick="show(this)">0</button>
+            <button class="btn" onclick="show(this)">.</button>
+            <button id="equal" onclick="answer()">=</button>
+        </div>
+    </div>
+    <script>
+        let input=document.getElementById('inputbox');
+        let buttons=document.querySelectorAll('button');
+        let output="";
+        function removeall()
+        {
+            output="";
+            input.value=output;
+        }
+        function answer()
+        {
+            output=eval(output);
+            console.log(output);
+            input.value=output;
+        }
+        function show(obj)
+        {
+            output+=obj.textContent;
+            input.value=output;
+        }
+        function removeLast()
+        {
+            output = output.substring(0, output.length-1);
+            input.value = output;
+        }
+    </script>
+</body>
+</html>
